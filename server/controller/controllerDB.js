@@ -1,4 +1,7 @@
 const User = require('../models/usersModel')
+const axios = require('axios');
+const mongodb = require('mongodb');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
     createUser: (req, res) => {
@@ -22,27 +25,42 @@ module.exports = {
     },
 
     displayUser: (req, res) => {
-        // test display user on database
         User
             .find({
-                email: req.params.email
+                email: req.body.email,
+                password : req.body.password
             })
             .then(user => {
+                console.log(user)
                 if(user.length > 0){
-                    res.status(200).json({
-                        message: `Find user by email success`,
-                        data: user
-                    })
-                }else{
+                    jwt.sign({
+                        email : user[0].email
+                      }, process.env.JWT_SECRET,( err,token )=>{
+                        if( err ){
+                          res.status( 500 ).json({
+                            msg : err.message
+                          });
+                        }
+                        else{
+                          console.log(token);
+                          res.status( 200 ).json({
+                            mesg : 'login success',
+                            token : token,
+                            email : user[0].email,
+                          });
+                        }
+                      });
+
+                } else{
                     res.status(404).json({
                         message: `Email not found`,
-                    })
+                    });
                 }
             })
             .catch(err => {
                 res.status(404).json({
                     message: err.message
-                })
+                });
             })
     },
 

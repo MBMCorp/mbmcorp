@@ -9,88 +9,88 @@
     crossorigin="anonymous"></script>
   <title>MGM</title>
 </head>
-<script>
-  window.fbAsyncInit = function () {
-    FB.init({
-      appId: '270489340449974',
-      autoLogAppEvents: true,
-      xfbml: true,
-      version: 'v3.1'
-    });
-  };
 
-  (function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) { return; }
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  function checkLoginState() {
-    FB.getLoginStatus(function (response) {
-      console.log(response);
-      if (response !== undefined || response !== null) {
-        $.ajax({
-          url: `http://localhost:3000/fb-login`,
-          method: "POST",
-          data: {
-            token: response.authResponse.accessToken
-          }
-        })
-          .done((response) => {
-            console.log('mashooq pa eqo')
-            localStorage.setItem('token', response.token);
-
-          })
-          .fail(() => {
-            console.log('fail requesting');
-          });
-      }
-    });
-  }
-</script>
-
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
-<button onclick="test()">aaaa</button>
-
-
-<script>
-  const APIkey = "adaa4a18cb57a3bfa9ea8136605ab8a0";
-  // const id = localStorage.getItem("id");
-  // $.ajax({
-  //   url: `http://localhost:3000/user/${id}`,
-  //   method: "GET"
-  // })
-  //   .done(data => {
-  //     if (8 < 17) {
-
-  //     } else {
-
-  //     }
-  //   })
-  //   .fail(() => {
-  //     console.log('fail')
-  //   })
-  function test() {
-    $.ajax({
-      url: `https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&api_key=${APIkey}`,
-      method: "GET"
-    })
-      .done(data => {
-        console.log(data);
-      })
-      .fail(() => {
-        console.log('fail');
-      })
-  }
-
-</script>
 
 <body>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '270489340449974',
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v3.1'
+      });
+    };
 
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function checkLoginState() {
+      FB.getLoginStatus(function (response) {
+        console.log(response);
+        if (response !== undefined || response !== null) {
+          $.ajax({
+            url: `http://localhost:3000/fb-login`,
+            method: "POST",
+            data: {
+              token: response.authResponse.accessToken
+            }
+          })
+            .done((response) => {
+              console.log('mashooq pa eqo')
+              localStorage.setItem('token', response.token);
+
+            })
+            .fail(() => {
+              console.log('fail requesting');
+            });
+        }
+      });
+    }
+  </script>
+
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+  </fb:login-button>
+
+  <button onclick="test()">aaaa</button>
+
+
+  <script>
+    const APIkey = "adaa4a18cb57a3bfa9ea8136605ab8a0";
+    // const id = localStorage.getItem("id");
+    // $.ajax({
+    //   url: `http://localhost:3000/user/${id}`,
+    //   method: "GET"
+    // })
+    //   .done(data => {
+    //     if (8 < 17) {
+
+    //     } else {
+
+    //     }
+    //   })
+    //   .fail(() => {
+    //     console.log('fail')
+    //   })
+    function test() {
+      $.ajax({
+        url: `https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&api_key=${APIkey}`,
+        method: "GET"
+      })
+        .done(data => {
+          console.log(data);
+        })
+        .fail(() => {
+          console.log('fail');
+        })
+    }
+
+  </script>
 </body>
 
 </html>

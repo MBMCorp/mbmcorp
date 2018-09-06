@@ -20,6 +20,7 @@ module.exports = {
                 })
             })
     },
+
     displayUser: (req, res) => {
         // test display user on database
         User
@@ -33,6 +34,7 @@ module.exports = {
                 })
             })
     },
+    
     updateUser: (req, res) => {
         //  req.body checking condition here!!!
         User

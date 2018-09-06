@@ -306,3 +306,15 @@ body {
     width: 30px;
   }
 }
+
+.fb-login-button {
+  visibility: hidden;
+}
+
+.fb_iframe_widget {
+  display: block !important;
+}
+
+#spinner, #spinner1, #spinner2 {
+  cursor: pointer;
+}

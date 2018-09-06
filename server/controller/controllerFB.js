@@ -1,5 +1,5 @@
 const axios = require('axios');
-const User = require('../models/usersModel');
+// const User = require('../models/usersModel');
 const mongodb = require('mongodb');
 const jwt = require('jsonwebtoken');
 

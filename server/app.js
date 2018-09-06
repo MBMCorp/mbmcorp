@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const cors = require('cors')
+const cors = require('cors');
+app.use(cors());
+
 
 const port = 3000;
 require('dotenv').config();
@@ -24,4 +26,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const fbLogin = require('./routes/fbLogin');
-app.use('/users', fbLogin);
+app.use('/fb-login',fbLogin);
+const index = require('./routes/index');
+app.use('/',index);

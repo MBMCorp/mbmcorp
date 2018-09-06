@@ -5,8 +5,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
   <title>MGM</title>
 </head>
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: '270489340449974',
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: 'v3.1'
+    });
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  function checkLoginState() {
+    FB.getLoginStatus(function (response) {
+      console.log(response);
+      if (response !== undefined || response !== null) {
+        $.ajax({
+          url: `http://localhost:3000/fb-login`,
+          method: "POST",
+          data: {
+            token: response.authResponse.accessToken
+          }
+        })
+          .done((response) => {
+            console.log('mashooq pa eqo')
+            localStorage.setItem('token', response.token);
+
+          })
+          .fail(() => {
+            console.log('fail requesting');
+          });
+      }
+    });
+  }
+</script>
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
 
 <body>
 

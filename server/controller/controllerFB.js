@@ -49,7 +49,8 @@ module.exports = {
                     console.log(token);
                     res.status( 200 ).json({
                       mesg : 'login success',
-                      token : token
+                      token : token,
+                      email : data.email
                     });
                   }
                 });

@@ -6,7 +6,7 @@ router.get('/',(req,res)=>{
   console.log('mashooq pa eqo');
 });
 
-router.post('/fb-login',findUser);
+router.post('/',findUser);
 
 // Testing CRUD User
 router.post('/create',createUser);

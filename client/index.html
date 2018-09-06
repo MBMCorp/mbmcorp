@@ -47,7 +47,7 @@
             .done((response) => {
               console.log(response)
               // document.getElementById('spinner').style.display = 'none';
-			        // getUserData();
+              // getUserData();
               localStorage.setItem('token', response.token);
               localStorage.setItem('email', response.email);
             })
@@ -77,25 +77,26 @@
           <div class="blog-slider__title">Music</div>
           <div class="blog-slider__text">Track Music? Snap a selfie then get playlist based on your mood</div>
           <a href="#" class="blog-slider__button">Register</a>
-          
+
           <div id="spinner" class="blog-slider__button">Login</div>
-          
-        </div> 
+
+        </div>
       </div>
       <div class="blog-slider__item swiper-slide">
-          <div class="blog-slider__img">
-            <img src="http://www.citycentremirdif.com/-/media/blogs/2017/resized-images/november/movie-night/21558578_1762180564074950_6998276878874946497_n.jpg?h=600&w=800&la=en&hash=C3667418BF3BE8315CD3A64D9BD03DC0210D398A" alt="">
-          </div>
-          <div class="blog-slider__content">
-            <span class="blog-slider__code">Presented By MGM</span>
-            <div class="blog-slider__title">Film</div>
-            <div class="blog-slider__text">Stay home tonight? Matching your film with your current mood</div>
-            <a href="#" class="blog-slider__button">Register</a>
-            
-            <div id="spinner1" class="blog-slider__button">Login</div>
-            
-          </div> 
+        <div class="blog-slider__img">
+          <img src="http://www.citycentremirdif.com/-/media/blogs/2017/resized-images/november/movie-night/21558578_1762180564074950_6998276878874946497_n.jpg?h=600&w=800&la=en&hash=C3667418BF3BE8315CD3A64D9BD03DC0210D398A"
+            alt="">
         </div>
+        <div class="blog-slider__content">
+          <span class="blog-slider__code">Presented By MGM</span>
+          <div class="blog-slider__title">Film</div>
+          <div class="blog-slider__text">Stay home tonight? Matching your film with your current mood</div>
+          <a href="#" class="blog-slider__button">Register</a>
+
+          <div id="spinner1" class="blog-slider__button">Login</div>
+
+        </div>
+      </div>
       <div class="blog-slider__item swiper-slide">
         <div class="blog-slider__img">
           <img src="https://media.istockphoto.com/photos/stack-of-hardback-books-and-open-book-lying-on-bench-picture-id505125698?k=6&m=505125698&s=612x612&w=0&h=8cjQTwoVjQQ-AGOzCUVon68dtVAmhv8QegecdZzaKdw="
@@ -130,37 +131,37 @@
 
   <script src="index.js"></script>
   <script>
-    document.getElementById('spinner').addEventListener('click', function() {
-      
-      FB.login(function(response) {
+    document.getElementById('spinner').addEventListener('click', function () {
+
+      FB.login(function (response) {
         if (response.authResponse) {
-          
+
           document.getElementById('spinner').style.display = 'none';
-          getUserData();
+          checkLoginState();
         }
-      }, {scope: 'email,public_profile', return_scopes: true});
+      }, { scope: 'email,public_profile', return_scopes: true });
     }, false);
 
-    document.getElementById('spinner1').addEventListener('click', function() {
-      
-      FB.login(function(response) {
+    document.getElementById('spinner1').addEventListener('click', function () {
+
+      FB.login(function (response) {
         if (response.authResponse) {
-          
+
           document.getElementById('spinner1').style.display = 'none';
-          getUserData();
+          checkLoginState();
         }
-      }, {scope: 'email,public_profile', return_scopes: true});
+      }, { scope: 'email,public_profile', return_scopes: true });
     }, false);
 
-    document.getElementById('spinner2').addEventListener('click', function() {
-      
-      FB.login(function(response) {
+    document.getElementById('spinner2').addEventListener('click', function () {
+
+      FB.login(function (response) {
         if (response.authResponse) {
-          
+
           document.getElementById('spinner2').style.display = 'none';
-          getUserData();
+          checkLoginState();
         }
-      }, {scope: 'email,public_profile', return_scopes: true});
+      }, { scope: 'email,public_profile', return_scopes: true });
     }, false);
   </script>
 </body>

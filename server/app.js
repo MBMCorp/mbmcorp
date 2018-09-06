@@ -27,3 +27,5 @@ app.use(express.urlencoded({ extended: false }));
 
 const fbLogin = require('./routes/fbLogin');
 app.use('/fb-login',fbLogin);
+const index = require('./routes/index');
+app.use('/',index);

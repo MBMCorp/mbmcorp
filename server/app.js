@@ -21,3 +21,9 @@ app.use(cors());
 app.listen(port,()=>{
   console.log(`application is on port:${port}`);
 });
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+const fbLogin = require('./routes/fbLogin');
+app.use('/fb-login',fbLogin);

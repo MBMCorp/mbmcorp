@@ -1,5 +1,5 @@
 const axios = require('axios');
-// const User = require('../models/usersModel');
+const User = require('../models/usersModel');
 const mongodb = require('mongodb');
 const jwt = require('jsonwebtoken');
 
@@ -32,6 +32,7 @@ module.exports = {
           }
 
           else{
+            console.log()
             User.findOne({ email: response.data.email }, function (err, data) {
               if(!err){
                 jwt.sign({
@@ -45,6 +46,7 @@ module.exports = {
                     });
                   }
                   else{
+                    console.log(token);
                     res.status( 200 ).json({
                       mesg : 'login success',
                       token : token
@@ -65,6 +67,7 @@ module.exports = {
 
     })
     .catch(err=>{
+      console.log('error ey');
       res.send(err);
     });
   }

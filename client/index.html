@@ -42,12 +42,12 @@
             }
           })
             .done((response) => {
-              console.log('mashooq pa eqo')
+              console.log(response)
               localStorage.setItem('token', response.token);
 
             })
-            .fail(() => {
-              console.log('fail requesting');
+            .fail((err) => {
+              console.log(err);
             });
         }
       });

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createUser,displayUser,findEmail } = require('../controller/controllerDB');
+const { createUser,displayUser,findEmail,updateUser } = require('../controller/controllerDB');
 const { movies,books } = require('../controller/controllerAPI');
 const { postPhotoReturnDataSelector } = require('../controller/controllerAzure');
 
@@ -9,5 +9,7 @@ router.post('/movies',movies);
 router.get('/users',findEmail);
 router.get('/books',books);
 router.post('/azure',postPhotoReturnDataSelector);
+router.post('/update',updateUser);
+
 
 module.exports = router;

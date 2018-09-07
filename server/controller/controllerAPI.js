@@ -11,7 +11,13 @@ module.exports = {
         url: `https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&api_key=${APIkey}`
       })
       .then(items=>{
-        res.send(items.data);
+        const data = [];
+        for(let i = 0;i<3;i++){
+          data.push(items.data.results[i]);
+        }
+        res.status(200).json({
+          data : data
+        });
       })
       .catch(err=>{
         res.send(err.message);
@@ -22,7 +28,13 @@ module.exports = {
         url: `https://api.themoviedb.org/3/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=${APIkey}`
       })
       .then(items=>{
-        res.send(items.data);
+        const data = [];
+        for(let i = 0;i<3;i++){
+          data.push(items.data.results[i]);
+        }
+        res.status(200).json({
+          data : data
+        });
       })
       .catch(err=>{
         res.send(err.message);

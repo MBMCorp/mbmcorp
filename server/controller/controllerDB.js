@@ -68,14 +68,10 @@ module.exports = {
     updateUser: (req, res) => {
         User
             .update({
-                _id: id
+                email : req.body.email
             },{
                 $set:{
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password,
                     age: req.body.age,
-                    address: req.body.address
                 }
             })
             .then(code => {

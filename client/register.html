@@ -48,5 +48,11 @@
                     console.log(err);
                 })
         })
+
+        $(window).ready(() => {
+            if (localStorage.getItem("token") !== null || localStorage.getItem("token") !== undefined) {
+                window.location.href = "http://localhost:8080/dashboard";
+            }
+        })
     </script>
 </body>

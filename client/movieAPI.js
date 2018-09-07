@@ -1,4 +1,3 @@
-const APIkey = "adaa4a18cb57a3bfa9ea8136605ab8a0";
 const id = localStorage.getItem("email");
 $.ajax({
   url: `http://localhost:3000/users/?email=id`,
@@ -10,7 +9,10 @@ $.ajax({
   } else{
     $.ajax({
       url: `http://localhost:3000/movies`,
-      method: "GET"
+      method: "POST",
+      data : {
+        age : data.age
+      }
     })
     .done(data=>{
       console.log(data);

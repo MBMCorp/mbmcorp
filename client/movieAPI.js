@@ -22,4 +22,4 @@ $.ajax({
 })
 .fail(()=>{
   console.log(fail);
-});
+})

@@ -12,7 +12,7 @@ router.get('/users',findEmail);
 router.get('/books',books);
 router.post('/azure',postPhotoReturnDataSelector);
 router.post('/update',updateUser);
-router.post('/track', findUserTrack)
+router.get('/track', findUserTrack)
 
 
 module.exports = router;

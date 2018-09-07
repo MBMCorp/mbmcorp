@@ -46,8 +46,6 @@
           })
             .done((response) => {
               console.log(response)
-              // document.getElementById('spinner').style.display = 'none';
-              // getUserData();
               localStorage.setItem('token', response.token);
               localStorage.setItem('email', response.email);
               window.location.href = "http://localhost:8080/dashboard"
@@ -59,12 +57,6 @@
       });
     }
 
-    // var finished_rendering = function() {
-    //   console.log("finished rendering plugins");
-    //   var spinner = document.getElementById("spinner");
-    //   spinner.removeAttribute("style");
-    //   spinner.removeChild(spinner.childNodes[0]);
-    // }
   </script>
 
   <div class="blog-slider">
@@ -77,7 +69,7 @@
           <span class="blog-slider__code">Presented By MGM</span>
           <div class="blog-slider__title">Music</div>
           <div class="blog-slider__text">Track Music? Snap a selfie then get playlist based on your mood</div>
-          <a href="#" class="blog-slider__button">Register</a>
+          <a href="/register.html" class="blog-slider__button">Register</a>
 
           <div id="spinner" class="blog-slider__button">Login</div>
 
@@ -92,7 +84,7 @@
           <span class="blog-slider__code">Presented By MGM</span>
           <div class="blog-slider__title">Film</div>
           <div class="blog-slider__text">Stay home tonight? Matching your film with your current mood</div>
-          <a href="#" class="blog-slider__button">Register</a>
+          <a href="/register.html" class="blog-slider__button">Register</a>
 
           <div id="spinner1" class="blog-slider__button">Login</div>
 
@@ -107,7 +99,7 @@
           <span class="blog-slider__code">Presented By MGM</span>
           <div class="blog-slider__title">Book</div>
           <div class="blog-slider__text">Wanna know your matching literary based on your current mood?</div>
-          <a href="#" class="blog-slider__button">Register</a>
+          <a href="/register.html" class="blog-slider__button">Register</a>
 
           <div id="spinner2" class="blog-slider__button">Login</div>
         </div>

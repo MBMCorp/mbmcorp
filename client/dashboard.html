@@ -32,34 +32,6 @@
         <!-- Recomendation List-->
         <div class="recomendations">
             <div class="example-equal-height">
-                <div class="example-equal-height-card">
-                    <div class="example-equal-height-figure">
-                        <i class="fa fa-music icon" aria-hidden="true"></i>
-                    </div>
-                    <div class="example-equal-height-caption">
-                        <h5>Your Songs</h5>
-                        <p>Churn rate non-disclosure agreement buyer focus ecosystem iPad.</p>
-                    </div>
-                </div>
-                <div class="example-equal-height-card">
-                    <div class="example-equal-height-figure">
-                        <i class="fa fa-film icon" aria-hidden="true"></i>
-                    </div>
-                    <div class="example-equal-height-caption">
-                        <h5>Your Films</h5>
-                        <p>Twitter stock equity vesting period learning curve launch party pitch innovator series A financing
-                            churn rate handshake.&nbsp;</p>
-                    </div>
-                </div>
-                <div class="example-equal-height-card">
-                    <div class="example-equal-height-figure">
-                        <i class="fa fa-book icon" aria-hidden="true"></i>
-                    </div>
-                    <div class="example-equal-height-caption">
-                        <h5>Your Books</h5>
-                        <p>Funding influencer partner network metrics bandwidth leverage traction buzz virality.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -103,8 +75,19 @@
                                         method: "GET"
                                     })
                                         .done(response => {
-                                            showDB(data)
                                             console.log(response, "ini buku");
+
+                                            $.ajax({
+                                                url: "http://localhost:3000/track",
+                                                method: "GET"
+                                            })
+                                                .done(data2 => {
+                                                    showDB(data, response, data2);
+                                                })
+                                                .fail(err => {
+                                                    console.log(err);
+                                                })
+
                                         })
                                         .fail(err => {
                                             console.log(err);

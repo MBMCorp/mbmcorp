@@ -3,8 +3,9 @@ const request = require('request')
 module.exports = {
     findUserTrack: (req, res) => {
         const options = {
-            url: `http://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country=${req.body.country}&api_key=${req.body.api_key}&format=json&limit=3`,
+            url: `http://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country=${req.body.country}&api_key=${process.env.MUSIC_API}&format=json&limit=3`,
         };
+
         request.get(options, (error, response, tracks) => {
             if (!error) {
                 res.status(200).json({

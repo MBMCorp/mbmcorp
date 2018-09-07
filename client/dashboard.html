@@ -29,6 +29,8 @@
             <input type="submit" id="inputbutton" value="Send it!">
         </div>
 
+        <button id="logoutbutton" value="Send it!">LOGOUT</button>
+
         <!-- Recomendation List-->
         <div class="recomendations">
             <div class="example-equal-height">
@@ -37,6 +39,13 @@
     </div>
 
     <script>
+        $('#logoutbutton').click(() => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('email');
+            window.location.href = "http://localhost:8080/";
+
+        })
+
         $("#inputbutton").click((e) => {
             e.preventDefault();
             //Calling Azure
@@ -82,6 +91,7 @@
                                                 method: "GET"
                                             })
                                                 .done(data2 => {
+                                                    console.log(data2.data.tracks.track[2].artist.name);
                                                     showDB(data, response, data2);
                                                 })
                                                 .fail(err => {

@@ -27,6 +27,7 @@ module.exports = {
     },
 
     displayUser: (req, res) => {
+        console.log(req.body);
         User
             .findOne({
                 email: req.body.email
@@ -35,7 +36,7 @@ module.exports = {
                 let isPasswordValid = bcrypt.compareSync(req.body.password, user.password)
                 if(isPasswordValid){
                     jwt.sign({
-                        email : user[0].email
+                        email : user.email
                       }, process.env.JWT_SECRET,( err,token )=>{
                         if( err ){
                           res.status( 500 ).json({
@@ -47,7 +48,7 @@ module.exports = {
                           res.status( 200 ).json({
                             mesg : 'login success',
                             token : token,
-                            email : user[0].email,
+                            email : user.email,
                           });
                         }
                       });

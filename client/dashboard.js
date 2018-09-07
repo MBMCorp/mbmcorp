@@ -9,7 +9,7 @@ function showRec() {
 }
 
 //Append List
-function showDB(movies,response) {
+function showDB(movies,response,songs) {
 
   $(".recomendations").css("visibility", "visible");
   $(".example-equal-height").text("");
@@ -20,8 +20,14 @@ function showDB(movies,response) {
           <i class="fa fa-music icon" aria-hidden="true"></i>
       </div>
       <div class="example-equal-height-caption">
-          <h5>Your Songs</h5>
-          <p>Churn rate non-disclosure agreement buyer focus ecosystem iPad.</p>
+      <h5>${songs.data.tracks.track[0].name}</h5>
+      <p>${songs.data.tracks.track[0].artist.name}</p><br>
+
+      <h5>${songs.data.tracks.track[1].name}</h5>
+      <p>${songs.data.tracks.track[1].artist.name}</p><br>
+
+      <h5>${songs.data.tracks.track[2].name}</h5>
+      <p>${songs.data.tracks.track[2].artist.name}</p><br>
       </div>
     </div>
     <div class="example-equal-height-card">

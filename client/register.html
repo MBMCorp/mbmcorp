@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,21 +11,48 @@
         crossorigin="anonymous"></script>
     <title>Register</title>
 </head>
+
 <body>
     <div class="boxForm">
-        <form action="" method="">
+        <form action="#" method="POST" id="register">
             <div class="row">
-              <h2 style="text-align:center">Register</h2>
-        
-              <div class="col">
-                <input type="text" name="username" placeholder="Username" required class="inputForm">
-                <input type="password" name="password" placeholder="Password" required class="inputForm">
-                <input type="email" name="email" placeholder="Email" required class="inputForm">
-                <input type="submit" value="Register" class="formBtn">
-              </div>
-              
+                <h2 style="text-align:center">Register</h2>
+
+                <div class="col">
+                    <input type="text" name="name" placeholder="Full Name" required class="inputForm" id="nameValue">
+                    <input type="email" name="email" placeholder="Email" required class="inputForm" id="emailValue">
+                    <input type="password" name="password" placeholder="Password" required class="inputForm" id="passwordValue">
+                    <input type="submit" value="Register" class="formBtn">
+                </div>
+
             </div>
-          </form>
+        </form>
     </div>
+
+    <script>
+        $("#register").submit((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: "http://localhost:3000/register",
+                method: "POST",
+                data: {
+                    email: $("#emailValue").val(),
+                    password: $("#passwordValue").val(),
+                    name: $("#nameValue").val(),
+                }
+            })
+                .done(data => {
+                    window.location.href = "http://localhost:8080/login";
+                })
+                .fail(err => {
+                    console.log(err);
+                })
+        })
+
+        $(window).ready(() => {
+            if (localStorage.getItem("token") !== null || localStorage.getItem("token") !== undefined) {
+                window.location.href = "http://localhost:8080/dashboard";
+            }
+        })
+    </script>
 </body>
-</html>

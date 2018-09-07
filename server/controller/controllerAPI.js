@@ -28,5 +28,24 @@ module.exports = {
         res.send(err.message);
       });
     }
+  },
+
+  books : (req,res)=>{
+    const NYTimes = process.env.NY_TIMES;
+
+    axios({
+      method : "GET",
+      url : `https://api.nytimes.com/svc/books/v3/lists/overview.json?&api-key=${NYTimes}`
+    })
+    .then(nytimesBestSellers=>{
+      res.status(200).json({
+        books : nytimesBestSellers.data
+      });
+    })
+    .catch(err=>{
+      res.status(404).json({
+        msg : err
+      });
+    });
   }
 };

@@ -9,12 +9,11 @@ function showRec() {
 }
 
 //Append List
-function showDB(movies) {
+function showDB(movies,response) {
 
   $(".recomendations").css("visibility", "visible");
   $(".example-equal-height").text("");
 
-  movies.data.forEach(movie => {
     $(".example-equal-height").append(
       `<div class="example-equal-height-card">
       <div class="example-equal-height-figure">
@@ -30,9 +29,17 @@ function showDB(movies) {
           <i class="fa fa-film icon" aria-hidden="true"></i>
       </div>
       <div class="example-equal-height-caption">
-          <h5>${movie.title}</h5>
-          <p>${movie.overview}</p><br>
-          <p><i class="fa fa-star-o" style="font-size:20px;color:yellow"></i>${movie.popularity}</p>
+          <h5>${movies.data[0].title}</h5>
+          <p>${movies.data[0].overview}</p><br>
+          <p><i class="fa fa-star-o" style="font-size:20px;color:yellow"></i>${movies.data[0].popularity}</p><br><br><br>
+
+          <h5>${movies.data[1].title}</h5>
+          <p>${movies.data[1].overview}</p><br>
+          <p><i class="fa fa-star-o" style="font-size:20px;color:yellow"></i>${movies.data[1].popularity}</p><br><br><br>
+
+          <h5>${movies.data[2].title}</h5>
+          <p>${movies.data[2].overview}</p><br>
+          <p><i class="fa fa-star-o" style="font-size:20px;color:yellow"></i>${movies.data[2].popularity}</p><br><br><br>
       </div>
     </div>
     <div class="example-equal-height-card">
@@ -40,13 +47,17 @@ function showDB(movies) {
           <i class="fa fa-book icon" aria-hidden="true"></i>
       </div>
       <div class="example-equal-height-caption">
-          <h5>Your Books</h5>
-          <p>Twitter stock equity vesting period learning curve launch party pitch innovator series A financing
-              churn rate handshake.&nbsp;</p>
+      <h5>${response.books.results.lists[1].books[0].title}</h5>
+      <p>${response.books.results.lists[1].books[0].description}</p><br>
+
+      <h5>${response.books.results.lists[1].books[1].title}</h5>
+      <p>${response.books.results.lists[1].books[1].description}</p><br>
+
+      <h5>${response.books.results.lists[1].books[2].title}</h5>
+      <p>${response.books.results.lists[1].books[2].description}</p><br>
       </div>
     </div>`
     )
-  });
 
 }
 

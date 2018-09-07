@@ -1,7 +1,7 @@
 const APIkey = "adaa4a18cb57a3bfa9ea8136605ab8a0";
-const id = localStorage.getItem("id");
+const id = localStorage.getItem("email");
 $.ajax({
-  url: `http://localhost:3000/user/${id}`,
+  url: `http://localhost:3000/users/?email=id`,
   method: "GET"
 })
 .done(data=>{
@@ -9,7 +9,7 @@ $.ajax({
 
   } else{
     $.ajax({
-      url: `https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&api_key=${APIkey}`,
+      url: `http://localhost:3000/movies`,
       method: "GET"
     })
     .done(data=>{
@@ -17,7 +17,9 @@ $.ajax({
     })
     .fail(()=>{
       console.log(fail);
-    })
+    });
   }
 })
-.fail()
+.fail(()=>{
+  console.log(fail);
+});

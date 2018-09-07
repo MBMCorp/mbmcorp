@@ -88,5 +88,19 @@ module.exports = {
                     message: err.message
                 })
             })
+    },
+
+    findEmail : function(req,res){
+        User.find({
+            email : req.query.email
+        })
+        .then(data=>{
+
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     }
+
+
 }

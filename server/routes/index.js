@@ -1,7 +1,10 @@
 const router = require('express').Router();
-const { createUser,displayUser } = require('../controller/controllerDB');
+const { createUser,displayUser,findEmail } = require('../controller/controllerDB');
+const { movies } = require('../controller/controllerAPI');
 
 router.post('/register',createUser);
 router.post('/login',displayUser);
+router.get('/movies',movies);
+router.get('/users',findEmail);
 
 module.exports = router;

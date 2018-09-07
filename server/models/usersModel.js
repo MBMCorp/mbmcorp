@@ -19,9 +19,12 @@ const userSchema = new Schema({
     },
     photoLink:{
         type: String
+    },
+    country:{
+        type: String
     }
 },{
     timestamps: true
 })
 const User = mongoose.model('User', userSchema);
-module.exports = User
+module.exports = User;

@@ -9,7 +9,8 @@ module.exports = {
             .create({
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                country : req.body.country
             })
             .then(user => {
                 res.status(201).json({

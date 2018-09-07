@@ -2,6 +2,7 @@ const User = require('../models/usersModel')
 const axios = require('axios');
 const mongodb = require('mongodb');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs')
 
 module.exports = {
     createUser: (req, res) => {
@@ -26,15 +27,13 @@ module.exports = {
     },
 
     displayUser: (req, res) => {
-        console.log(req.body)
         User
-            .find({
-                email: req.body.email,
-                password : req.body.password
+            .findOne({
+                email: req.body.email
             })
             .then(user => {
-                console.log(user)
-                if(user.length > 0){
+                let isPasswordValid = bcrypt.compareSync(req.body.password, user.password)
+                if(isPasswordValid){
                     jwt.sign({
                         email : user[0].email
                       }, process.env.JWT_SECRET,( err,token )=>{

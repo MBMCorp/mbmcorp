@@ -22,7 +22,7 @@
                     <input type="text" name="name" placeholder="Full Name" required class="inputForm" id="nameValue">
                     <input type="email" name="email" placeholder="Email" required class="inputForm" id="emailValue">
                     <input type="password" name="password" placeholder="Password" required class="inputForm" id="passwordValue">
-                    <input type="password" name="country" placeholder="Country" required class="inputForm" id="countryValue">
+                    <input type="text" name="country" placeholder="Country" required class="inputForm" id="countryValue">
                     <input type="submit" value="Register" class="formBtn">
                 </div>
 
@@ -51,10 +51,10 @@
                 })
         })
 
-        $(window).ready(() => {
-            if (localStorage.getItem("token") !== null || localStorage.getItem("token") !== undefined) {
-                window.location.href = "http://localhost:8080/dashboard";
-            }
-        })
+        // $(window).ready(() => {
+        //     if (localStorage.getItem("token") !== null || localStorage.getItem("token") !== undefined) {
+        //         window.location.href = "http://localhost:8080/dashboard";
+        //     }
+        // })
     </script>
 </body>

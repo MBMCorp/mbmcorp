@@ -14,17 +14,39 @@
 
 <body>
     <div class="boxForm">
-        <form action="http://localhost:3000/login" method="POST">
+        <form action="#" method="POST" id="login">
             <div class="row">
                 <h2 style="text-align:center">Login</h2>
 
                 <div class="col">
-                    <input type="email" name="email" placeholder="Email" required class="inputForm">
-                    <input type="password" name="password" placeholder="Password" required class="inputForm">
+                    <input type="email" name="email" placeholder="Email" required class="inputForm" id="emailValue">
+                    <input type="password" name="password" placeholder="Password" required class="inputForm" id="passwordValue">
                     <input type="submit" value="Login" class="formBtn">
                 </div>
 
             </div>
         </form>
     </div>
+
+    <script>
+        $("#login").submit((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: "http://localhost:3000/login",
+                method: "POST",
+                data: {
+                    email: $("#emailValue").val(),
+                    password: $("#passwordValue").val(),
+                }
+            })
+                .done(data => {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('email', data.email);
+                    window.location.href = "http://localhost:8080/dashboard";
+                })
+                .fail(err => {
+                    console.log(err);
+                })
+        })
+    </script>
 </body>

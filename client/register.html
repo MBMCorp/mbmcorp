@@ -14,18 +14,39 @@
 
 <body>
     <div class="boxForm">
-        <form action="http://localhost:3000/register" method="POST">
+        <form action="#" method="POST" id="register">
             <div class="row">
                 <h2 style="text-align:center">Register</h2>
 
                 <div class="col">
-                    <input type="text" name="name" placeholder="Full Name" required class="inputForm">
-                    <input type="email" name="email" placeholder="Email" required class="inputForm">
-                    <input type="password" name="password" placeholder="Password" required class="inputForm">
+                    <input type="text" name="name" placeholder="Full Name" required class="inputForm" id="nameValue">
+                    <input type="email" name="email" placeholder="Email" required class="inputForm" id="emailValue">
+                    <input type="password" name="password" placeholder="Password" required class="inputForm" id="passwordValue">
                     <input type="submit" value="Register" class="formBtn">
                 </div>
 
             </div>
         </form>
     </div>
+
+    <script>
+        $("#register").submit((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: "http://localhost:3000/register",
+                method: "POST",
+                data: {
+                    email: $("#emailValue").val(),
+                    password: $("#passwordValue").val(),
+                    name: $("#nameValue").val(),
+                }
+            })
+                .done(data => {
+                    window.location.href = "http://localhost:8080/login";
+                })
+                .fail(err => {
+                    console.log(err);
+                })
+        })
+    </script>
 </body>

@@ -25,6 +25,7 @@ module.exports = {
     },
 
     displayUser: (req, res) => {
+        console.log(req.body)
         User
             .find({
                 email: req.body.email,

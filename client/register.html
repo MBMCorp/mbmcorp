@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +11,21 @@
         crossorigin="anonymous"></script>
     <title>Register</title>
 </head>
+
 <body>
     <div class="boxForm">
-        <form action="" method="">
+        <form action="http://localhost:3000/register" method="POST">
             <div class="row">
-              <h2 style="text-align:center">Register</h2>
-        
-              <div class="col">
-                <input type="text" name="username" placeholder="Username" required class="inputForm">
-                <input type="password" name="password" placeholder="Password" required class="inputForm">
-                <input type="email" name="email" placeholder="Email" required class="inputForm">
-                <input type="submit" value="Register" class="formBtn">
-              </div>
-              
+                <h2 style="text-align:center">Register</h2>
+
+                <div class="col">
+                    <input type="text" name="name" placeholder="Full Name" required class="inputForm">
+                    <input type="email" name="email" placeholder="Email" required class="inputForm">
+                    <input type="password" name="password" placeholder="Password" required class="inputForm">
+                    <input type="submit" value="Register" class="formBtn">
+                </div>
+
             </div>
-          </form>
+        </form>
     </div>
 </body>

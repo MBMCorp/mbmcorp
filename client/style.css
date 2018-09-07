@@ -364,11 +364,26 @@ body {
   color: #fff;
   box-shadow: 0px 14px 80px rgba(252, 56, 56, 0.4);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: bold;
+  font-size: 15px;
   justify-content: center;
   text-align: center;
   letter-spacing: 1px;
   margin: 20px auto 50px;
   border: none;
   cursor: pointer;
+}
+
+.fb {
+  display: inline-flex;
+  background-color: #3B5998;
+  padding: 15px 20px;
+  border-radius: 50px;
+  color: #fff;
+  box-shadow: 0px 14px 80px rgba(252, 56, 56, 0.4);
+  text-decoration: none;
+  font-weight: 500;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 1px;
 }

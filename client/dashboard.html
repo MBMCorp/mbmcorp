@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://uploads-ssl.webflow.com/56cd68220565856c6df62081/css/flexbox.webflow.603047c0b.css" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <title>Dashboard</title>
+
+</head>
+
+<body>
+    <script src="dashboard.js"></script>
+
+
+    <div class="wrapper-body">
+        <!-- Snap Box-->
+        <div class="snap__container">
+            <p class="snap__title">
+                Snap your selfie and send it!
+            </p>
+            <input class="snap__input" type="text" placeholder="Input snap here" id="inputurl">
+            <input type="submit" id="inputbutton" value="Send it!">
+        </div>
+
+        <button id="logoutbutton" value="Send it!">LOGOUT</button>
+
+        <!-- Recomendation List-->
+        <div class="recomendations">
+            <div class="example-equal-height">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#logoutbutton').click(() => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('email');
+            window.location.href = "http://localhost:8080/";
+
+        })
+
+        $("#inputbutton").click((e) => {
+            e.preventDefault();
+            //Calling Azure
+            $.ajax({
+                url: "http://localhost:3000/azure",
+                method: "POST",
+                data: {
+                    img: $("#inputurl").val()
+                }
+            })
+                .done(data => {
+                    const age = data.data[0].age;
+                    //Update user data
+                    $.ajax({
+                        url: "http://localhost:3000/update",
+                        method: "POST",
+                        data: {
+                            age: age,
+                            email: localStorage.getItem("email")
+                        }
+                    })
+                        .done((res) => {
+                            //Get Movies Data
+                            $.ajax({
+                                url: "http://localhost:3000/movies",
+                                method: "POST",
+                                data: {
+                                    age: age
+                                }
+                            })
+                                .done(data => {
+
+                                    //Calling Books
+                                    $.ajax({
+                                        url: "http://localhost:3000/books",
+                                        method: "GET"
+                                    })
+                                        .done(response => {
+                                            console.log(response, "ini buku");
+
+                                            $.ajax({
+                                                url: "http://localhost:3000/track",
+                                                method: "GET"
+                                            })
+                                                .done(data2 => {
+                                                    console.log(data2.data.tracks.track[2].artist.name);
+                                                    showDB(data, response, data2);
+                                                })
+                                                .fail(err => {
+                                                    console.log(err);
+                                                })
+
+                                        })
+                                        .fail(err => {
+                                            console.log(err);
+                                        })
+                                })
+                                .fail(err => {
+                                    console.log(err);
+                                })
+                        })
+                        .fail(err => {
+                            console.log(err);
+                        })
+
+                })
+                .fail(err => {
+                    console.log(err);
+                })
+        })
+
+        $(window).ready(() => {
+            if (localStorage.getItem("token") === null || localStorage.getItem("token") === undefined) {
+                window.location.href = "http://localhost:8080/login";
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
